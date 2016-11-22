@@ -1,0 +1,39 @@
+@html.extend("layout", function(model){ @html.block("scripts", function(model){
+<script src="/lib/socket.io-client/socket.io.js"></script>
+<script src="/js/notesView.js"></script>
+}) @html.block("body",function(model){
+<div ng-app="notesView">
+    <a href="/">Back</a>
+    <br/><br/>
+    <div ng-controller="notesViewController">
+        <div ng-repeat="n in notes">
+            <div>{{n.note}}</div>
+            <div>{{n.color}}</div>
+            <div><small>{{n.author}}</small></div>
+            <br/>
+        </div>
+        <form role="form" name="newNoteForm" ng-submit="save()">
+            <div>
+                <label>Color</label>
+                <input type="radio" ng-model="newNote.color" name="color" value="yellow" />yellow
+                <input type="radio" ng-model="newNote.color" name="color" value="green" />green
+                <input type="radio" ng-model="newNote.color" name="color" value="red" />red<br/>
+            </div>
+            <br/>
+            <div>
+                <label>Content</label>
+                <textarea cols="30" rows="2" name="note" ng-model="newNote.note" placeholder="Your note" required maxlength="120">
+
+                </textarea>
+                <div ng-show="newNoteForm.note.$error.required"><small>Required </small>
+                </div>
+                <div><small>{{120 - newNote.note.length}} characters left</small></div>
+            </div>
+            <br/>
+            <div>
+                <input type="submit" value="Save" ng-disabled="newNoteForm.$invalid" />
+            </div>
+        </form>
+    </div>
+</div>
+}) })

@@ -1,0 +1,35 @@
+@html.extend("layout",function(model){ @html.block("body",function(model){
+<h3>@model.title</h3>
+@if(model.message) {
+<p>@model.message</p>
+}
+<form action="/register" method="POST" role="form">
+    <div>
+        <label>Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" name="name" placeholder="Name" />
+    </div>
+    <br/>
+    <div>
+        <label>Email</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" name="email" placeholder="Email" />
+    </div>
+    <br/>
+    <div>
+        <label>Username</label>&nbsp;
+        <input type="text" name="username" placeholder="Username" />
+    </div>
+    <br/>
+    <div>
+        <label>Password</label>&nbsp;&nbsp;
+        <input type="password" name="password" placeholder="password" />
+    </div>
+    <br/>
+    <div>
+        <input type="submit" value="Register" />
+    </div>
+    <br/>
+    <div>
+        <p>Or <a href="">Login</a> if you have already an account</p>
+    </div>
+</form>
+}) })
